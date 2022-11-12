@@ -2,12 +2,16 @@ Which files were created for project submittal vs. kept as a reference from comp
 
 
 List of files created during "guided lessons":
+A.  student_info.sh
+    student_insert_data.sh
+    students.sql
+B.  bike_shop.sh
+
 
 List of Projects (self created based task list):
-1. 
-    
-2. 
-    
-3. Salon
-    salon.sh
-    salon.sql
+1.  universe.sql    
+2.  worldcup.sql
+    worldcup_insert_data.sh
+    worldcup_queries.sh
+3. salon.sh
+   salon.sql
