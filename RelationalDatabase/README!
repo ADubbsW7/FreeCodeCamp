@@ -13,5 +13,7 @@ List of Projects (self created based task list):
 2.  worldcup.sql
     worldcup_insert_data.sh
     worldcup_queries.sh
-3. salon.sh
-   salon.sql
+3.  salon.sh
+    salon.sql
+4.  periodic_table.sql
+    elements.sh
