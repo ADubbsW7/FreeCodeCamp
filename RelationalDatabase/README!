@@ -6,8 +6,7 @@ A.  student_info.sh
     student_insert_data.sh
     students.sql
 B.  bike_shop.sh
-
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 List of Projects (self created based task list):
 1.  universe.sql    
 2.  worldcup.sql
@@ -19,3 +18,258 @@ List of Projects (self created based task list):
     elements.sh
 5.  number_guess.sql
     number_guess.sh
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Project Instructions:
+1. Celestial Bodies Database
+
+Complete the tasks below:
+
+You should create a database named universe
+
+Be sure to connect to your database with \c universe. Then, you should add tables named galaxy, star, planet, and moon
+
+Each table should have a primary key
+
+Each primary key should automatically increment
+
+Each table should have a name column
+
+You should use the INT data type for at least two columns that are not a primary or foreign key
+
+You should use the NUMERIC data type at least once
+
+You should use the TEXT data type at least once
+
+You should use the BOOLEAN data type on at least two columns
+
+Each "star" should have a foreign key that references one of the rows in galaxy
+
+Each "planet" should have a foreign key that references one of the rows in star
+
+Each "moon" should have a foreign key that references one of the rows in planet
+
+Your database should have at least five tables
+
+Each table should have at least three rows
+
+The galaxy and star tables should each have at least six rows
+
+The planet table should have at least 12 rows
+
+The moon table should have at least 20 rows
+
+Each table should have at least three columns
+
+The galaxy, star, planet, and moon tables should each have at least five columns
+
+At least two columns per table should not accept NULL values
+
+At least one column from each table should be required to be UNIQUE
+
+All columns named name should be of type VARCHAR
+
+Each primary key column should follow the naming convention table_name_id. For example, the moon table should have a primary key column named moon_id
+
+Each foreign key column should have the same name as the column it is referencing
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2. World Cup Database
+You start with several files, one of them is games.csv. It contains a comma-separated list of all games of the final three rounds of the World Cup tournament since 2014; the titles are at the top. It includes the year of each game, the round of the game, the winner, their opponent, and the number of goals each team scored. You need to do three things for this project:
+
+Part 1: Create the database
+
+Log into the psql interactive terminal with psql --username=freecodecamp --dbname=postgres and create your database structure according to the user stories below.
+
+Part 2: Insert the data
+
+Complete the insert_data.sh script to correctly insert all the data from games.csv into the database. The file is started for you. Do not modify any of the code you start with. Using the PSQL variable defined, you can make database queries like this: $($PSQL "<query_here>"). The tests have a 20 second limit, so try to make your script efficient. The less you have to query the database, the faster it will be. You can empty the rows in the tables of your database with TRUNCATE TABLE games, teams;
+
+Part 3: Query the database
+
+Complete the empty echo commands in the queries.sh file to produce output that matches the expected_output.txt file. The file has some starter code, and the first query is completed for you. Use the PSQL variable defined to complete rest of the queries. Note that you need to have your database filled with the correct data from the script to get the correct results from your queries. Hint: Test your queries in the psql prompt first and then add them to the script file.
+Complete the tasks below
+
+You should create a database named worldcup
+
+You should connect to your worldcup database and then create teams and games tables
+
+Your teams table should have a team_id column that is a type of SERIAL and is the primary key, and a name column that has to be UNIQUE
+
+Your games table should have a game_id column that is a type of SERIAL and is the primary key, a year column of type INT, and a round column of type VARCHAR
+
+Your games table should have winner_id and opponent_id foreign key columns that each reference team_id from the teams table
+
+Your games table should have winner_goals and opponent_goals columns that are type INT
+
+All of your columns should have the NOT NULL constraint
+
+Your two script (.sh) files should have executable permissions. Other tests involving these two files will fail until permissions are correct. When these permissions are enabled, the tests will take significantly longer to run
+
+When you run your insert_data.sh script, it should add each unique team to the teams table. There should be 24 rows
+
+When you run your insert_data.sh script, it should insert a row for each line in the games.csv file (other than the top line of the file). There should be 32 rows. Each row should have every column filled in with the appropriate info. Make sure to add the correct ID's from the teams table (you cannot hard-code the values)
+
+You should correctly complete the queries in the queries.sh file. Fill in each empty echo command to get the output of what is suggested with the command above it. Only use a single line like the first query. The output should match what is in the expected_output.txt file
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3. Salon Appointment Scheduler
+Complete the tasks below
+
+You should create a database named salon
+
+You should connect to your database, then create tables named customers, appointments, and services
+
+Each table should have a primary key column that automatically increments
+
+Each primary key column should follow the naming convention, table_name_id. For example, the customers table should have a customer_id key. Note that there’s no s at the end of customer
+
+Your appointments table should have a customer_id foreign key that references the customer_id column from the customers table
+
+Your appointments table should have a service_id foreign key that references the service_id column from the services table
+
+Your customers table should have phone that is a VARCHAR and must be unique
+
+Your customers and services tables should have a name column
+
+Your appointments table should have a time column that is a VARCHAR
+
+You should have at least three rows in your services table for the different services you offer, one with a service_id of 1
+
+You should create a script file named salon.sh in the project folder
+
+Your script file should have a “shebang” that uses bash when the file is executed (use #! /bin/bash)
+
+Your script file should have executable permissions
+
+You should not use the clear command in your script
+
+You should display a numbered list of the services you offer before the first prompt for input, each with the format #) <service>. For example, 1) cut, where 1 is the service_id
+
+If you pick a service that doesn't exist, you should be shown the same list of services again
+
+Your script should prompt users to enter a service_id, phone number, a name if they aren’t already a customer, and a time. You should use read to read these inputs into variables named SERVICE_ID_SELECTED, CUSTOMER_PHONE, CUSTOMER_NAME, and SERVICE_TIME
+
+If a phone number entered doesn’t exist, you should get the customers name and enter it, and the phone number, into the customers table
+
+You can create a row in the appointments table by running your script and entering 1, 555-555-5555, Fabio, 10:30 at each request for input if that phone number isn’t in the customers table. The row should have the customer_id for that customer, and the service_id for the service entered
+
+You can create another row in the appointments table by running your script and entering 2, 555-555-5555, 11am at each request for input if that phone number is already in the customers table. The row should have the customer_id for that customer, and the service_id for the service entered
+
+After an appointment is successfully added, you should output the message I have put you down for a <service> at <time>, <name>. For example, if the user chooses cut as the service, 10:30 is entered for the time, and their name is Fabio in the database the output would be I have put you down for a cut at 10:30, Fabio. Make sure your script finishes running after completing any of the tasks above, or else the tests won't pass
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+4. Periodic Table Database
+Part 1: Fix the database
+
+There are some mistakes in the database that need to be fixed or changed. See the user stories below for what to change.
+
+Part 2: Create your git repository
+
+You need to make a small bash program. The code needs to be version controlled with git, so you will need to turn the suggested folder into a git repository.
+
+Part 3: Create the script
+
+Lastly, you need to make a script that accepts an argument in the form of an atomic number, symbol, or name of an element and outputs some information about the given element.
+Complete the tasks below
+
+You should rename the weight column to atomic_mass
+
+You should rename the melting_point column to melting_point_celsius and the boiling_point column to boiling_point_celsius
+
+Your melting_point_celsius and boiling_point_celsius columns should not accept null values
+
+You should add the UNIQUE constraint to the symbol and name columns from the elements table
+
+Your symbol and name columns should have the NOT NULL constraint
+
+You should set the atomic_number column from the properties table as a foreign key that references the column of the same name in the elements table
+
+You should create a types table that will store the three types of elements
+
+Your types table should have a type_id column that is an integer and the primary key
+
+Your types table should have a type column that's a VARCHAR and cannot be null. It will store the different types from the type column in the properties table
+
+You should add three rows to your types table whose values are the three different types from the properties table
+
+Your properties table should have a type_id foreign key column that references the type_id column from the types table. It should be an INT with the NOT NULL constraint
+
+Each row in your properties table should have a type_id value that links to the correct type from the types table
+
+You should capitalize the first letter of all the symbol values in the elements table. Be careful to only capitalize the letter and not change any others
+
+You should remove all the trailing zeros after the decimals from each row of the atomic_mass column. You may need to adjust a data type to DECIMAL for this. Be careful not to change the value
+
+You should add the element with atomic number 9 to your database. Its name is Fluorine, symbol is F, mass is 18.998, melting point is -220, boiling point is -188.1, and it's a nonmetal
+
+You should add the element with atomic number 10 to your database. Its name is Neon, symbol is Ne, mass is 20.18, melting point is -248.6, boiling point is -246.1, and it's a nonmetal
+
+You should create a periodic_table folder in the project folder and turn it into a git repository with git init
+
+Your repository should have a main branch with all your commits
+
+Your periodic_table repo should have at least five commits
+
+You should create an element.sh file in your repo folder for the program I want you to make
+
+Your script (.sh) file should have executable permissions
+
+If you run ./element.sh, it should output Please provide an element as an argument. and finish running.
+
+If you run ./element.sh 1, ./element.sh H, or ./element.sh Hydrogen, it should output The element with atomic number 1 is Hydrogen (H). It's a nonmetal, with a mass of 1.008 amu. Hydrogen has a melting point of -259.1 celsius and a boiling point of -252.9 celsius.
+
+If you run ./element.sh script with another element as input, you should get the same output but with information associated with the given element.
+
+If the argument input to your element.sh script doesn't exist as an atomic_number, symbol, or name in the database, the output should be I could not find that element in the database.
+
+The message for the first commit in your repo should be Initial commit
+
+The rest of the commit messages should start with fix:, feat:, refactor:, chore:, or test:
+
+You should delete the non existent element, whose atomic_number is 1000, from the two tables
+
+Your properties table should not have a type column
+
+You should finish your project while on the main branch. Your working tree should be clean and you should not have any uncommitted changes
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5. Number Guessing Game
+
+Complete the tasks below
+
+Create a number_guessing_game folder in the project folder for your program
+
+Create number_guess.sh in your number_guessing_game folder and give it executable permissions
+
+Your script should have a shebang at the top of the file that uses #!/bin/bash
+
+Turn the number_guessing_game folder into a git repository
+
+Your git repository should have at least five commits
+
+Your script should randomly generate a number that users have to guess
+
+When you run your script, you should prompt the user for a username with Enter your username:, and take a username as input. Your database should allow usernames of at least 22 characters
+
+If that username has been used before, it should print Welcome back, <username>! You have played <games_played> games, and your best game took <best_game> guesses., with <username> being a users name from the database, <games_played> being the total number of games that user has played, and <best_game> being the fewest number of guesses it took that user to win the game
+
+If the username has not been used before, you should print Welcome, <username>! It looks like this is your first time here.
+
+The next line printed should be Guess the secret number between 1 and 1000: and input from the user should be read
+
+Until they guess the secret number, it should print It's lower than that, guess again: if the previous input was higher than the secret number, and It's higher than that, guess again: if the previous input was lower than the secret number. Asking for input each time until they input the secret number.
+
+If anything other than an integer is input as a guess, it should print That is not an integer, guess again:
+
+When the secret number is guessed, your script should print You guessed it in <number_of_guesses> tries. The secret number was <secret_number>. Nice job!
+
+The message for the first commit should be Initial commit
+
+The rest of the commit messages should start with fix:, feat:, refactor:, chore:, or test:
+
+You should finish your project while on the main branch, your working tree should be clean, and you should not have any uncommitted changes
